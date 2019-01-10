@@ -1,0 +1,56 @@
+MySQL => DBMS
+
+root 로그인
+database 생성
+유저 생성 및 권한
+실제로 반영 => 테이블 생성(create)
+insert, select
+
+## 비밀번호 변경
+# cd 'C:\Program Files\MySQL\MySQL Server 8.0\bin\'
+# start mysqld.exe --skip-grant-tables
+
+UPDATE mysql.user SET password=password('hadoop') WHERE user='root';
+FLUSH PRIVILEGES;
+
+https://kutar37.tistory.com/entry/Mysql-root-%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8-%EC%9E%AC%EC%84%A4%EC%A0%95
+
+# cd 'C:\Program Files\MySQL\MySQL Server 8.0\bin\'
+# start mysqld.exe --skip-grant-tables
+
+#UPDATE mysql.user SET password=password('hadoop') WHERE user='root';
+#FLUSH PRIVILEGES;
+
+#create user 'scott'@'localhost' identified by 'hadoop';
+
+#create database scott;
+
+#use scott;
+
+-------------------------------------------------------------------------------------
+# 유저 생성
+create user 'user'@'localhost' identified by 'hadoop';
+# 데이터베이스 생성
+create database FastCampus;
+#데이터 베이스 접근권한
+grant all privileges on FastCampus.* to 'user'@'localhost';
+use FastCampus;
+
+#테이블 생성
+create table fastWeb (
+num int(5) NOT NULL auto_increment,
+title varchar(50) NOT NULL,
+content varchar(100) NOT NULL,
+name varchar(20) NOT NULL,
+passwd varchar(50) NOT NULL,
+createDate date NOT NULL,
+modifyDate date,
+primary key (num)
+);
+
+#데이터 생성
+insert into fastWeb(title, content, name, passwd, createDate) values("title01","content01","name01","passwd01", now());
+insert into fastWeb(title, content, name, passwd, createDate) values("title02","content02","name02","passwd02", now());
+insert into fastWeb(title, content, name, passwd, createDate) values("title03","content03","name03","passwd03",now());
+
+select * from fastWeb;
