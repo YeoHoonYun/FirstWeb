@@ -35,3 +35,25 @@ format, core
 글쓰기,
 
 MVC Model 1 vs MVC Model 2
+-----------------------------------------------------------------------------------
+2019-01-10
+
+1) Cookie
+클라이언트가 서버에게 reqeust에 getCookies라는 Cookie 배열을 가져다 준다.
+ => 클라이언트가 쿠키를 몇 개를 가질수 있는가?
+ => 서버는 클라이언트에게 response.addCookie를 보낼수 잇고, 많은 양을 보낼수 없다.
+ => 디스크에 저장된다.
+ => 모든 도메인에 3000개
+ => 한 사람당 300
+
+2) Session
+ => 클라이언트는 요청정보를 서버에 보내고 서버는 세션id과 Session을 저장한다. HttpSession(Key:String, Value: Object)
+ => 세션id가 저장되면, 돌아 갈 때, 세션id를 클라이언트에 보내고, 다시 필요하면 세션id를 보내서 세션을 저장한다.
+ => request.getSession
+ => sesstion.setAttribute();
+ => sesstion.getAttribute(); / 형변환을 해줘야함.
+ => 이러한 방법은 Session scope
+ => 다시 가지고 오면 세션id를 키로가지고 value값을 가지고 온다.
+
+Cookie와 HttpSession이 어떤 메서드를 가지고 있는지.
+
