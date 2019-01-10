@@ -40,11 +40,11 @@ use FastCampus;
 create table fastWeb (
 num int(5) NOT NULL auto_increment,
 title varchar(50) NOT NULL,
-content varchar(100) NOT NULL,
-name varchar(20) NOT NULL,
+content text NOT NULL,
+name varchar(255) NOT NULL,
 passwd varchar(50) NOT NULL,
-createDate date NOT NULL,
-modifyDate date,
+createDate datetime NOT NULL,
+modifyDate datetime,
 primary key (num)
 );
 

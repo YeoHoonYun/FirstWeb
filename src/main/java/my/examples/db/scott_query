@@ -1,11 +1,11 @@
 -- creates some test-tables and data
 DROP TABLE employee;
-#DROP TABLE department;
-#DROP TABLE salarygrade;
-#DROP TABLE bonus;
-#DROP TABLE project;
-#DROP TABLE project_participation;
-#DROP TABLE role;
+DROP TABLE department;
+DROP TABLE salarygrade;
+DROP TABLE bonus;
+DROP TABLE project;
+DROP TABLE project_participation;
+DROP TABLE role;
 
 CREATE TABLE employee(
    empno      INTEGER NOT NULL,

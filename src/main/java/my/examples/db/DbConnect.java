@@ -13,7 +13,7 @@ public class DbConnect {
         ResultSet rs = null;
 
         String server = "localhost"; // MySQL 서버 주소
-        String database = "WebFast"; // MySQL DATABASE 이름
+        String database = "FastCampus"; // MySQL DATABASE 이름
         String user_name = "yun"; //  MySQL 서버 아이디
         String password = "hadoop"; // MySQL 서버 비밀번호
 
@@ -31,10 +31,10 @@ public class DbConnect {
             System.out.println("정상적으로 연결었습니다.");
 
             stmt = con.createStatement();
-            rs = stmt.executeQuery("select * from test");
+            rs = stmt.executeQuery("select * from fastWeb");
 
             while(rs.next()){
-                System.out.print(rs.getString("id"));
+                System.out.print(rs.getString("num"));
                 System.out.print(" : ");
                 System.out.println(rs.getString("name"));
             }
