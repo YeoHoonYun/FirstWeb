@@ -36,21 +36,60 @@ create database FastCampus;
 grant all privileges on FastCampus.* to 'user'@'localhost';
 use FastCampus;
 
-#테이블 생성
-create table fastWeb (
-num int(5) NOT NULL auto_increment,
-title varchar(50) NOT NULL,
-content text NOT NULL,
-name varchar(255) NOT NULL,
-passwd varchar(50) NOT NULL,
-createDate datetime NOT NULL,
-modifyDate datetime,
-primary key (num)
+CREATE TABLE board (
+id BIGINT AUTO_INCREMENT,
+title VARCHAR(255) NOT NULL,
+content LONGTEXT NOT NULL,
+name VARCHAR(255) NOT NULL,
+regdate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+read_count INT NOT NULL DEFAULT 0,
+PRIMARY KEY (id)
 );
 
-#데이터 생성
-insert into fastWeb(title, content, name, passwd, createDate) values("title01","content01","name01","passwd01", now());
-insert into fastWeb(title, content, name, passwd, createDate) values("title02","content02","name02","passwd02", now());
-insert into fastWeb(title, content, name, passwd, createDate) values("title03","content03","name03","passwd03",now());
+drop table board;
 
-select * from fastWeb;
+INSERT INTO board(title, content, name) VALUES("title01","content01","name01");
+INSERT INTO board(title, content, name) VALUES("title02","content02","name02");
+INSERT INTO board(title, content, name) VALUES("title03","content03","name03");
+
+INSERT INTO board(title, content, name) VALUES(?,?,?);
+
+SELETE * FROM board;
+DELETE FROM board WHERE id = 2;
+
+게시판 상세조회
+SELECTE id, title, content, name, regdate, read_count
+FROM board WHERE id = 3;
+
+UPDATE board
+SET read_count = read_count + 1
+WHERE id = 3;
+
+select * from Board limit 2;
+
+* sql - 그룹함수, group by
+select count(*) from board;
+
+int count = 7;
+int count / 3
+int page = count/3 + ((7 % 3 > 0) ? 1 : 0);
+
+* 정렬
+order by id desc
+
+* 건수
+LIMIT 0, 3 # 3건
+--------------------------------------------------------------------------------------
+
+데이터를 수정해서 다른 쪽데이터에 연관되어 있는 것들도 같이 결점없이 있어야한다. 데이터 무결성
+ => 정규화(데이터의 중복을 제거한다.)
+
+DDL(데이터 정의 언어 - Data Definition Language) :
+DML(데이터 조작 언어 - Data Manipulation Language) :
+DCL(데이터 제어 언어 - Data Control Language) : 사용자, 권한
+
+CREATE database hrdb DEFAULT CHARACTER SET utf8;
+use hrdb;
+CREATE USER 'hr'@'%' IDENTIFIED BY 'hr';
+GRANT ALL PRIVILEGES ON hrdb.* TO 'hr'@'%';
+FLUSH PRIVILEGES;
